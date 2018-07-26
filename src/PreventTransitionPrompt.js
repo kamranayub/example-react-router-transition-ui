@@ -47,8 +47,8 @@ class PreventTransitionPrompt extends React.Component {
 
     return (
       <React.Fragment>
-        {/* React Router prompt, message is the Symbol trigger key */}
-        <Prompt when={when} message={Symbol.keyFor(this.__trigger)} />
+        {/* React Router prompt, callback will return true to allow transition or dialog key to prevent */}
+        <Prompt when={when} message={this.handleTransition} />
 
         {/* Example MUI dialog to show when open. You could make this
             totally customizable or a complete one-off. */}
@@ -85,6 +85,23 @@ class PreventTransitionPrompt extends React.Component {
    */
   handleClose = () => {
     this.setState({ open: false });
+  };
+
+  /**
+   * Handles the Router transition. Returns true if allowed
+   * or the dialog trigger key to enable the dialog.
+   *
+   * This would be a good candidate to allow optionally
+   * being passed as a callback prop to let
+   * caller decide if transition is allowed.
+   */
+  handleTransition = location => {
+    // example: allow transitions to /two
+    if (location.pathname === "/two") {
+      return true;
+    }
+
+    return Symbol.keyFor(this.__trigger);
   };
 }
 
