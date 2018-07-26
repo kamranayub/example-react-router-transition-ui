@@ -20,8 +20,7 @@ class PreventTransitionPrompt extends React.Component {
 
     // Define a unique global symbol to store
     // a dialog trigger reference accessible via
-    // a string key. Use date as a kinda fake-ish
-    // uniqueness factor.
+    // a string key. Use cuid for unique ID.
     this.__trigger = Symbol.for(`__PreventTransitionPrompt_${cuid()}`);
   }
 
