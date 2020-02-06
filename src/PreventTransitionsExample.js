@@ -70,7 +70,7 @@ class Form extends React.Component {
 
         <Typography variant="title">
           Blocking?{" "}
-          {isBlocking ? "Yes, click a link or the back button" : "Nope"}
+          {isBlocking ? "Yes, click a link or the back button. Navigation to /two is ALLOWED." : "Nope"}
         </Typography>
 
         <p>
